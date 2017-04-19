@@ -446,10 +446,12 @@ var resizePizzas = function(size) {
 
   // 遍历披萨的元素并改变它们的宽度
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    var randomPizza = document.querySelectorAll(".randomPizzaContainer")
+    var dx = determineDx(randomPizza[0], size);
+    //moved above two lines of codes outside of for loop
+    var newwidth = (randomPizza[0].offsetWidth + dx) + 'px';
+    for (var i = 0; i < randomPizza.length; i++) {
+      randomPizza[i].style.width = newwidth;
     }
   }
 
@@ -499,8 +501,10 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
+
+  var phase = Math.sin((document.body.scrollTop / 1250) );
+  //move above line of code outside of the for loop to avoid FSL
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
