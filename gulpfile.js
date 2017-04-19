@@ -1,15 +1,16 @@
 
+
+
+
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
-const htmlmin = require('gulp-htmlmin');
 
 
-
-gulp.task('default', function() {
-  return gulp.src('./*.html')
-    .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('./'));
-});
+gulp.task('default', () =>
+    gulp.src('/views/images/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('/views/images/'))
+);
 
 
 // // var gulp = require('gulp'),
