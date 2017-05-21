@@ -446,9 +446,19 @@ var resizePizzas = function(size) {
 
   // 遍历披萨的元素并改变它们的宽度
   function changePizzaSizes(size) {
+<<<<<<< HEAD:myDemo/demo/optimization/views/js/main.js
     var randomPizza = document.getElementsByClassName("randomPizzaContainer")
     var dx = determineDx(randomPizza[0], size);
     //moved above two lines of codes outside of for loop
+||||||| merged common ancestors
+    var randomPizza = document.querySelectorAll(".randomPizzaContainer")
+    var dx = determineDx(randomPizza[0], size);
+    //moved above two lines of codes outside of for loop
+=======
+    var randomPizza = document.getElementsByClassName("randomPizzaContainer")
+    var dx = determineDx(randomPizza[0], size);
+    //moved above two lines of codes outside of for loop
+>>>>>>> origin/master:views/js/main.js
     var newwidth = (randomPizza[0].offsetWidth + dx) + 'px';
     for (var i = 0; i < randomPizza.length; i++) {
       randomPizza[i].style.width = newwidth;
@@ -501,10 +511,23 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+<<<<<<< HEAD:myDemo/demo/optimization/views/js/main.js
   var items = document.getElementsByClassName('mover');
   var scrollTop = document.body.scrollTop
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
+||||||| merged common ancestors
+  var items = document.querySelectorAll('.mover');
+
+  var phase = Math.sin((document.body.scrollTop / 1250) );
+  //move above line of code outside of the for loop to avoid FSL
+  for (var i = 0; i < items.length; i++) {
+=======
+  var items = document.getElementsByClassName('mover');
+  var scrollTop = document.body.scrollTop
+  for (var i = 0; i < items.length; i++) {
+    var phase = Math.sin((scrollTop / 1250) + (i % 5));
+>>>>>>> origin/master:views/js/main.js
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
